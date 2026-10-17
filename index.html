@@ -7,10 +7,29 @@
 <body>
     <h1>Library Management System</h1>
     <p>Welcome to the library.</p>
+
     <h2>Available Books</h2>
-    <ul>
+
+    <input type="text" id="search" placeholder="Search books">
+    <button onclick="searchBooks()">Search</button>
+
+    <ul id="bookList">
         <li>Java Programming</li>
         <li>Python Programming</li>
+        <li>Data Structures</li>
     </ul>
+
+    <script>
+        function searchBooks() {
+            const query = document.getElementById("search")
+                .value.toLowerCase();
+
+            document.querySelectorAll("#bookList li").forEach(book => {
+                book.style.display =
+                    book.textContent.toLowerCase().includes(query)
+                    ? "list-item" : "none";
+            });
+        }
+    </script>
 </body>
 </html>
